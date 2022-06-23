@@ -15,8 +15,8 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('timesheets.index')" :active="request()->routeIs('timesheets.index')">
-                        {{ __('Timesheet') }}
+                    <x-nav-link :href="route('worksheets.index')" :active="request()->routeIs('worksheets.index')">
+                        {{ __('Worksheet') }}
                     </x-nav-link>
                     <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
                         {{ __('Projects') }}
@@ -72,8 +72,8 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('timesheets.index')" :active="request()->routeIs('timesheets.index')">
-                {{ __('Timesheet') }}
+            <x-responsive-nav-link :href="route('worksheets.index')" :active="request()->routeIs('worksheets.index')">
+                {{ __('Worksheet') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('projects.index')" :active="request()->routeIs('projects.index')">
                 {{ __('Projects') }}

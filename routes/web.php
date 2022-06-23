@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjectController;
-use App\Http\Controllers\TimesheetController;
+use App\Http\Controllers\WorksheetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +28,7 @@ Route::group(['middleware'=>'auth'], function(){
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('timesheets', TimesheetController::class);
+    Route::resource('worksheets', WorksheetController::class);
     Route::resource('projects', ProjectController::class);
     
 });

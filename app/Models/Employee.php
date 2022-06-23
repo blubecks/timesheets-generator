@@ -22,10 +22,10 @@ class Employee extends Model
     }
 
     /**
-     * Get the timesheets for the employee.
+     * Get the worksheets for the employee.
      */
-    public function timesheets()
+    public function worksheets()
     {
-        return $this->hasMany(Timesheet::class);
+        return $this->hasMany(Worksheet::class);
     }
 }

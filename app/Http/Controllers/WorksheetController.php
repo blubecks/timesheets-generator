@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateTimesheetRequest;
-use App\Imports\TimesheetsImport;
-use App\Models\Timesheet;
+use App\Http\Requests\CreateWorksheetRequest;
+use App\Imports\WorksheetsImport;
+use App\Models\Worksheet;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
-class TimesheetController extends Controller
+class WorksheetController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class TimesheetController extends Controller
      */
     public function index()
     {
-        $timesheets = Timesheet::with('employee')->paginate();
+        $worksheets = Worksheet::with('employee')->paginate();
 
-        return view('timesheets.index', compact('timesheets'));
+        return view('worksheets.index', compact('worksheets'));
     }
 
     /**
@@ -29,7 +29,7 @@ class TimesheetController extends Controller
      */
     public function create()
     {
-        return view('timesheets.create');
+        return view('worksheets.create');
     }
 
     /**
@@ -38,10 +38,10 @@ class TimesheetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateTimesheetRequest $request)
+    public function store(CreateWorksheetRequest $request)
     {
-        Excel::import(new TimesheetsImport, $request->file('timesheet')->store('temp'));
-        return redirect()->route('timesheets.index')->with('message', 'Timesheet loaded!');
+        Excel::import(new WorksheetsImport, $request->file('worksheet')->store('temp'));
+        return redirect()->route('worksheets.index')->with('message', 'Worksheet loaded!');
     }
 
     /**

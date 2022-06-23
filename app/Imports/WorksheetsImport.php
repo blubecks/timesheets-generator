@@ -3,14 +3,14 @@
 namespace App\Imports;
 
 use App\Models\Employee;
-use App\Models\Timesheet;
+use App\Models\Worksheet;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
 
-class TimesheetsImport implements ToCollection
+class WorksheetsImport implements ToCollection
 {
 
     private function importEmployees(Collection $raw_employees): Collection{
@@ -46,7 +46,7 @@ class TimesheetsImport implements ToCollection
                     if ($hours){
                         Log::debug($employees[$index]);
                         Log::debug($hours);
-                        $ts = new Timesheet();
+                        $ts = new Worksheet();
                         $ts->day = Carbon::createFromFormat('d/m/y', $row[0]);
                         $ts->worked_hours = $hours;
                         $ts->employee()->associate($employees[$index]);

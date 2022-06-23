@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Timesheet extends Model
+class Worksheet extends Model
 {
     use HasFactory, SoftDeletes;
 
 
      /**
-     * Get the employee from the timesheet.
+     * Get the employee from the worksheet.
      */
     public function employee()
     {

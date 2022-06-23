@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Timesheet') }}
+            {{ __('Worksheet') }}
         </h2>
     </x-slot>
 
@@ -15,7 +15,7 @@
                                 <x-success-message class="mb-4" />
                                 
                                 <div class="flex justify-end mb-4">
-                                    <a class="bg-green-500 border-green-500 text-white btn border-primary border-2" href="{{ route('timesheets.create') }}">Upload a Timesheet</a>
+                                    <a class="bg-green-500 border-green-500 text-white btn border-primary border-2" href="{{ route('worksheets.create') }}">Upload a Worksheet</a>
                                 </div>
                                 
                                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -37,7 +37,7 @@
                                         </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach ($timesheets as $row)
+                                        @foreach ($worksheets as $row)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 {{ $row->day }}
@@ -49,7 +49,7 @@
                                                 {{ $row->worked_hours }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                                <a href="{{ route('timesheets.edit', $row) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                                <a href="{{ route('worksheets.edit', $row) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -58,7 +58,7 @@
 
                                 </div>
                                 <div class="mt-4">
-                                {{ $projects->links() }}
+                                {{ $worksheets->links() }}
                                 </div>
                             </div>
                         </div>
