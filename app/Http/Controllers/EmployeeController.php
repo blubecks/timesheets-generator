@@ -37,7 +37,8 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Employee::firstOrCreate($request->only('last_name'));
+        return redirect()->route('employees.index')->with('message', 'Employee created!');
     }
 
     /**
