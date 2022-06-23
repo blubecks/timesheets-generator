@@ -10,6 +10,10 @@ class Project extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'name', 'start', 'stop'
+    ];
+
      /**
      * Get the employees for the project.
      */

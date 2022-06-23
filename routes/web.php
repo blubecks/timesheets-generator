@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimesheetController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::group(['middleware'=>'auth'], function(){
     })->name('dashboard');
 
     Route::resource('timesheets', TimesheetController::class);
+    Route::resource('projects', ProjectController::class);
     
 });
 
