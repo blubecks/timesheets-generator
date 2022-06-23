@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\WorksheetController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,7 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::resource('worksheets', WorksheetController::class);
     Route::resource('projects', ProjectController::class);
+    Route::resource('employees', EmployeeController::class);
     
 });
 
