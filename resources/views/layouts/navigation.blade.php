@@ -15,7 +15,7 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('timesheets.create')" :active="request()->routeIs('timesheets.create')">
+                    <x-nav-link :href="route('timesheets.index')" :active="request()->routeIs('timesheets.index')">
                         {{ __('Timesheet') }}
                     </x-nav-link>
                 </div>
@@ -69,7 +69,7 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('timesheets.create')" :active="request()->routeIs('timesheets.create')">
+            <x-responsive-nav-link :href="route('timesheets.index')" :active="request()->routeIs('timesheets.index')">
                 {{ __('Timesheet') }}
             </x-responsive-nav-link>
         </div>

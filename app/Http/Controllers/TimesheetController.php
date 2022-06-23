@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTimesheetRequest;
+use App\Models\Timesheet;
 use Illuminate\Http\Request;
 
 class TimesheetController extends Controller
@@ -14,7 +15,9 @@ class TimesheetController extends Controller
      */
     public function index()
     {
-        //
+        $timesheets = Timesheet::paginate();
+
+        return view('timesheets.index', compact('timesheets'));
     }
 
     /**
@@ -35,7 +38,7 @@ class TimesheetController extends Controller
      */
     public function store(CreateTimesheetRequest $request)
     {
-        return redirect()->route('timesheets.create')->with('message', 'Timesheet loaded!');
+        return redirect()->route('timesheets.index')->with('message', 'Timesheet loaded!');
     }
 
     /**
