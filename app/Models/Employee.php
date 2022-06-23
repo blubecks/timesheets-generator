@@ -10,6 +10,8 @@ class Employee extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['last_name'];
+
 
      /**
      * Get the projects for the employee.

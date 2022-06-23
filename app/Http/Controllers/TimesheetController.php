@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateTimesheetRequest;
+use App\Imports\TimesheetsImport;
 use App\Models\Timesheet;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class TimesheetController extends Controller
@@ -15,7 +17,7 @@ class TimesheetController extends Controller
      */
     public function index()
     {
-        $timesheets = Timesheet::paginate();
+        $timesheets = Timesheet::with('employee')->paginate();
 
         return view('timesheets.index', compact('timesheets'));
     }
@@ -38,6 +40,7 @@ class TimesheetController extends Controller
      */
     public function store(CreateTimesheetRequest $request)
     {
+        Excel::import(new TimesheetsImport, $request->file('timesheet')->store('temp'));
         return redirect()->route('timesheets.index')->with('message', 'Timesheet loaded!');
     }
 

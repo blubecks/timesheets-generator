@@ -43,7 +43,7 @@
                                                 {{ $row->day }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $row->day }}
+                                                {{ $row->employee->last_name }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 {{ $row->worked_hours }}
