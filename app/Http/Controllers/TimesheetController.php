@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateTimesheetRequest;
 use Illuminate\Http\Request;
 
 class TimesheetController extends Controller
@@ -23,7 +24,7 @@ class TimesheetController extends Controller
      */
     public function create()
     {
-        //
+        return view('timesheets.create');
     }
 
     /**
@@ -32,9 +33,9 @@ class TimesheetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTimesheetRequest $request)
     {
-        //
+        return redirect()->route('timesheets.create')->with('message', 'Timesheet loaded!');
     }
 
     /**
