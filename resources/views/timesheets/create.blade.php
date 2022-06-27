@@ -13,13 +13,13 @@
                     <x-validation-errors class="mb-4" :errors="$errors" />
                     <x-success-message class="mb-4" />
                     
-                    <form method="POST" action="{{route('timesheet.store')}}"  enctype="multipart/form-data">
+                    <form method="POST" action="{{route('timesheets.store')}}"  enctype="multipart/form-data">
                         @csrf
                         
                         <div>
-                            <x-label class="mb-4" for="worksheet" :value="__('Worksheet to upload')" />
-                            <x-input id="worksheet" class="block mt-1 w-full" type="file" name="worksheet" />
+                            <livewire:timesheet/>
                         </div>
+                        
                         <div class="flex items-center justify-end mt-4">
                             <x-button class="ml-4">
                                 {{ __('Upload') }}

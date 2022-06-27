@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Effort;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class TimesheetController extends Controller
@@ -13,7 +15,8 @@ class TimesheetController extends Controller
      */
     public function index()
     {
-        //
+        $timesheets = Effort::paginate();
+        return view('timesheets.index', compact('timesheets'));
     }
 
     /**
@@ -23,7 +26,8 @@ class TimesheetController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('timesheets.create');
     }
 
     /**
