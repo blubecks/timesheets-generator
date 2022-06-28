@@ -25,6 +25,7 @@ class CreateProjectRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:projects|max:255',
+            'code' => 'required',
             'start' => 'required',
             'stop' => 'required',
         ];

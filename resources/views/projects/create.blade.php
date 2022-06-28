@@ -21,6 +21,10 @@
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name" value="{{ old('name') }}"/>
                         </div>
                         <div class="mt-4">
+                            <x-label for="code" :value="__('Project Id')" />
+                            <x-input id="code" class="block mt-1 w-full" type="text" name="code" value="{{ old('code') }}"/>
+                        </div>
+                        <div class="mt-4">
                             <x-label for="start" :value="__('Starting Date')" />
                             <x-input id="start" class="block mt-1 w-full" type="date" name="start" value="{{ old('start') }}"/>
                         </div>

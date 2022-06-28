@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Effort;
+use App\Models\Timesheet;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,11 @@ class TimesheetController extends Controller
      */
     public function index()
     {
-        $timesheets = Effort::paginate();
+        $timesheets = Timesheet::all()->groupBy(['project.name','employee.last_name'])->map(function($empl){
+            return $empl->map(function($tms){
+                return $tms->sum('worked_hours');
+            });
+        });
         return view('timesheets.index', compact('timesheets'));
     }
 

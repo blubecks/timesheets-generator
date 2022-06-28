@@ -13,19 +13,9 @@
                     <x-validation-errors class="mb-4" :errors="$errors" />
                     <x-success-message class="mb-4" />
                     
-                    <form method="POST" action="{{route('timesheets.store')}}"  enctype="multipart/form-data">
-                        @csrf
-                        
-                        <div>
-                            <livewire:timesheet/>
-                        </div>
-                        
-                        <div class="flex items-center justify-end mt-4">
-                            <x-button class="ml-4">
-                                {{ __('Upload') }}
-                            </x-button>
-                        </div>
-                    </form>
+                    <div>
+                        <livewire:timesheet/>
+                    </div>
                 </div>
             </div>
         </div>

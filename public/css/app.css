@@ -768,6 +768,9 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
+.mb-0 {
+  margin-bottom: 0px;
+}
 .block {
   display: block;
 }
@@ -965,6 +968,9 @@ select {
 .rounded-lg {
   border-radius: 0.5rem;
 }
+.rounded-none {
+  border-radius: 0px;
+}
 .rounded-l-md {
   border-top-left-radius: 0.375rem;
   border-bottom-left-radius: 0.375rem;
@@ -978,6 +984,9 @@ select {
 }
 .border-2 {
   border-width: 2px;
+}
+.border-0 {
+  border-width: 0px;
 }
 .border-b {
   border-bottom-width: 1px;
@@ -1135,6 +1144,10 @@ select {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 .pt-2 {
   padding-top: 0.5rem;
