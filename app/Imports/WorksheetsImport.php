@@ -34,21 +34,18 @@ class WorksheetsImport implements ToCollection
             if($index == 0){
                 //user import
                 $employees = $this->importEmployees($row);
-                
-                Log::debug("user import");
                 continue;
             }
             if($row[1] == 'O'){
                 //Working day to import
-                Log::debug($row[0]);
                 foreach ($row as $index => $hours){
                     if ($index < 2) continue;
                     if ($hours){
-                        Log::debug($employees[$index]);
-                        Log::debug($hours);
+                        
                         $ts = new Worksheet();
                         $ts->day = Carbon::createFromFormat('d/m/y', $row[0]);
                         $ts->worked_hours = $hours;
+                        $ts->available_hours = $hours;
                         $ts->employee()->associate($employees[$index]);
                         $ts->save();
                     }
