@@ -45,7 +45,8 @@ class Timesheet extends Component
                 $timesheet_obj = new \App\Models\Timesheet;
                 $timesheet_obj->day = $timesheet['day'];
                 $timesheet_obj->worked_hours = floatval($timesheet['worked_hours']);
-                $timesheet_obj->notes = $timesheet['notes'];
+                if (isset($timesheet['notes']))
+                    $timesheet_obj->notes = $timesheet['notes'];
                 $timesheet_obj->employee()->associate($employee);
                 $timesheet_obj->project()->associate($project);
                 $timesheet_obj->save();
