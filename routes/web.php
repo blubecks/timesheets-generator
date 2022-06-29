@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimesheetController;
 use App\Http\Controllers\WorksheetController;
@@ -34,6 +35,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('projects', ProjectController::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('timesheets', TimesheetController::class);
+
+    Route::get('pdf/generate/{employee}/{project}/{year}/{month}', [PDFController::class, 'generatePDF']);
     
 });
 
