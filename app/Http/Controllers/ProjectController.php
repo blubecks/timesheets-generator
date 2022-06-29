@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProjectRequest;
+use App\Http\Requests\EditProjectRequest;
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -61,7 +63,8 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('projects.edit', compact('project'));
     }
 
     /**
@@ -71,9 +74,13 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditProjectRequest $request, $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        $project->update($request->all());
+        return redirect()->route('projects.index')
+                        ->with('message', 'Project '.$project->name.' updated!');
+        
     }
 
     /**
