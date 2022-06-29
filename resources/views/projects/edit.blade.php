@@ -25,6 +25,14 @@
                             <x-input id="code" class="block mt-1 w-full" type="text" name="code" value="{{ $project->code }}"/>
                         </div>
                         <div class="mt-4">
+                            <x-label for="manager_first_name" :value="__('Manager First Name')" />
+                            <x-input id="manager_first_name" class="block mt-1 w-full" type="text" name="manager_first_name" value="{{ $project->manager_first_name }}"/>
+                        </div>
+                        <div class="mt-4">
+                            <x-label for="manager_last_name" :value="__('Manager Last Name')" />
+                            <x-input id="manager_last_name" class="block mt-1 w-full" type="text" name="manager_last_name" value="{{ $project->manager_last_name }}"/>
+                        </div>
+                        <div class="mt-4">
                             <x-label for="start" :value="__('Starting Date')" />
                             <x-input id="start" class="block mt-1 w-full" type="date" name="start" value="{{ $project->start }}"/>
                         </div>

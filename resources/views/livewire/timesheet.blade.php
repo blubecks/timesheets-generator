@@ -65,8 +65,21 @@
                     </th>
         
                 </tr>
+                
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
+                    <div>
+                        @if (session()->has('error'))
+                            <div class="bg-red-100 rounded-lg py-5 px-6 mb-4 text-base text-red-700 mb-3" role="alert">
+                            {{ session('error') }}
+                            </div>
+                        @endif
+                        @if (session()->has('message'))
+                            <div class="bg-green-100 rounded-lg py-5 px-6 mb-4 text-base text-green-700 mb-3" role="alert">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                    </div>
                     @foreach ($worksheets as $key => $row)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

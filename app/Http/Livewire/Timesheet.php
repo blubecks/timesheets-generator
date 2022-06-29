@@ -26,7 +26,9 @@ class Timesheet extends Component
 
         $employee = Employee::find($this->employee);
         $project = Project::find($this->project);
-
+        $timesheets_objs = [];
+        $worksheets_objs = [];
+        $errors = false;
         foreach($this->timesheets as $timesheet){
             if(isset($timesheet['worked_hours'])){
                 $worksheet = Worksheet::where([
@@ -36,11 +38,14 @@ class Timesheet extends Component
                  ])->first();
                  if(is_null($worksheet)){
                     //errors, return to the form
-                    dd("erorererere");
+                    session()->flash('error', 'Error in day '.$timesheet['day']);
+                    $errors = true;
+                    break;
+
                  }
                 
                 $worksheet->available_hours -=  floatval($timesheet['worked_hours']);
-                $worksheet->save();
+                array_push($worksheets_objs, $worksheet);
                 
                 $timesheet_obj = new \App\Models\Timesheet;
                 $timesheet_obj->day = $timesheet['day'];
@@ -49,12 +54,19 @@ class Timesheet extends Component
                     $timesheet_obj->notes = $timesheet['notes'];
                 $timesheet_obj->employee()->associate($employee);
                 $timesheet_obj->project()->associate($project);
-                $timesheet_obj->save();
-                
-                
+                array_push($timesheets_objs, $timesheet_obj->attributesToArray());
             }
-            
         }
+
+        if($errors == false){
+
+            \App\Models\Timesheet::insert($timesheets_objs);
+            foreach($worksheets_objs as $worksheet_obj){
+                $worksheet_obj->save();
+            }
+            session()->flash('message', 'Timesheet created!');
+        }
+        
 
     }
 
