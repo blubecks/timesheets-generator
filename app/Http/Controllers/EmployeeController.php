@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditEmployeeRequest;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
 use Illuminate\Http\Request;
@@ -72,9 +73,13 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditEmployeeRequest $request, $id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        $employee->update($request->all());
+        return redirect()->route('employees.index')
+                        ->with('message', 'Employee '.$employee->last_name.' updated!');
+        
     }
 
     /**

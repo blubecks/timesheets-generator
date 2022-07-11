@@ -13,7 +13,7 @@
                     <x-validation-errors class="mb-4" :errors="$errors" />
                     <x-success-message class="mb-4" />
                     
-                    <form method="POST" action="{{route('employees.update')}}"  enctype="multipart/form-data">
+                    <form method="POST" action="{{route('employees.update', $employee)}}"  enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div>

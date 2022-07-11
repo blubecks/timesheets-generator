@@ -23,7 +23,7 @@
                                         <div class="bg-gray-100 rounded overflow-hidden shadow-md p-4">
                                             <img src="https://scalingupnutrition.org/wp-content/uploads/2020/10/user-placeholder.png">
                                             <div class="mt-4">
-                                                <span class="font-bold"> {{ $employee->last_name }}</span>
+                                                <span class="font-bold"> {{ $employee->last_name }} {{$employee->first_name}}</span>
                                             </div>
                                             <div class="flex items-center justify-end mt-4">
                                             <a href="{{ route('employees.edit', $employee) }}" class="btn bg-green-500 text-white ml-4">
