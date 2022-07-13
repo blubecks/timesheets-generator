@@ -18,3 +18,5 @@ jobs:
             cd /var/www/timesheets-generator
             git pull origin master
             git status
+            composer install --optimize-autoloader --no-dev
+            npm run prod 
