@@ -32,6 +32,8 @@ Route::group(['middleware'=>'auth'], function(){
     })->name('dashboard');
 
     Route::resource('worksheets', WorksheetController::class);
+    Route::get('worksheet/csv', [WorksheetController::class, 'worksheet_csv'])->name('worksheets.get_csv');
+    
     Route::resource('projects', ProjectController::class);
     Route::resource('employees', EmployeeController::class);
     Route::resource('timesheets', TimesheetController::class);

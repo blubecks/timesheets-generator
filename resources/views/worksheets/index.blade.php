@@ -15,6 +15,7 @@
                                 <x-success-message class="mb-4" />
                                 
                                 <div class="flex justify-end mb-4">
+                                    <a style="margin-right:10px" class="mr-6 bg-yellow-500 border-yellow-500 text-white btn border-primary border-2" href="{{ route('worksheets.get_csv') }}">Download CSV</a>
                                     <a class="bg-green-500 border-green-500 text-white btn border-primary border-2" href="{{ route('worksheets.create') }}">Upload a Worksheet</a>
                                 </div>
                                 

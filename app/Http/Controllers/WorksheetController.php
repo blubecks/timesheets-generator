@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\WorksheetExport;
 use App\Http\Requests\CreateWorksheetRequest;
 use App\Imports\WorksheetsImport;
 use App\Models\Worksheet;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Excel as ExcelExcel;
 
 class WorksheetController extends Controller
 {
@@ -87,5 +89,15 @@ class WorksheetController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * 
+     */
+    public function worksheet_csv()
+    {
+        return Excel::download(new WorksheetExport, 'worksheets.csv');
+
     }
 }
