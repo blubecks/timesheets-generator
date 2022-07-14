@@ -7,3 +7,7 @@
 .btn {
     @apply rounded py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider;
 }
+.bg-red-500 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+  }

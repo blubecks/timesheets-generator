@@ -36,7 +36,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::resource('employees', EmployeeController::class);
     Route::resource('timesheets', TimesheetController::class);
 
-    Route::get('pdf/generate/{employee}/{project}/{year}/{month}', [PDFController::class, 'generatePDF']);
+    Route::get('employees/timesheets/{employee}', [EmployeeController::class, 'timesheectListing'])->name('employees.timesheets');
+    Route::get('pdf/generate/{employee}/{project}/{year}/{month}', [PDFController::class, 'generatePDF'])->name('pdf.generate');
     
 });
 

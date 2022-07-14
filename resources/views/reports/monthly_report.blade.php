@@ -3,13 +3,14 @@
 <head>
     <title>Laravel 9 Generate PDF Example - ItSolutionStuff.com</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
     <style>
-        @page { 
-            margin: 30 0 30;
+        @page {
+            margin: 30 0 30 0;
         }
     </style>
+</head>
+<body>
+    
     <div class="container">
         <div class="row">
             <div class="float-right">
@@ -32,72 +33,74 @@
             </ul>
         </div>
         <div class="row" style="margin-left: 10px ;">
-            <strong>Manager Details</strong>
-            <p>Last Name:&nbsp;{{$project->manager_last_name}}</p>
+            <div class="col-xs-2">
+                <strong>Manager Details</strong>
+                <p>Last Name:&nbsp;{{$project->manager_last_name}}</p>
+                First Name:&nbsp;{{$project->manager_first_name}}
+            </div>
+            <div class="col-xs-6">
+                <strong>Employee Details</strong>
+                <p>Last Name:&nbsp;{{$employee->last_name}}</p>
+                First Name:&nbsp;{{$employee->first_name}}
+            </div>
+        </div>
+    
+        <p><strong>Reporting Period</strong> {{\Carbon\Carbon::create()->day(1)->month($month)->format('M')}} {{ $year }}</p>
+  
+        <table class="table table-striped table-sm">
+            <thead >
+                <tr>
+                    <th>Date</th>
+                    <th>Presence Hours</th>
+                    <th>Project Hours</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            @foreach($period as $date)
+            <tr>
+                <td>{{ $date->format('d-m-Y') }}</td>
+                @if (isset($worksheet_as_dict[$date->format('Y-m-d')]))
+                    <td>{{$worksheet_as_dict[$date->format('Y-m-d')]->worked_hours}}</td>    
+                @else
+                    <td>-</td>    
+                @endif
+                @if (isset($timesheet_as_dict[$date->format('Y-m-d')]))
+                    <td>{{$worksheet_as_dict[$date->format('Y-m-d')]->worked_hours}}</td>    
+                    @if (isset($worksheet_as_dict[$date->format('Y-m-d')]->notes))
+                        <td>{{$worksheet_as_dict[$date->format('Y-m-d')]->notes}}</td>    
+                    @else
+                        <td>-</td>
+                    @endif
+                @else
+                    <td>-</td>    
+                    <td>-</td>    
+                @endif
+                
+            </tr>
+            @endforeach
+        </table>
+        <br>
+        <br>
+        <div class="row" style="margin-left: 10px ;">
+                
+                <p><strong>Total Presence Hours</strong> {{$total_presence}}</p>
         </div>
         <div class="row" style="margin-left: 10px ;">
-            <strong>Employee Details</strong>
-            <p>Last Name {{$employee->last_name}}</p>
-        </div>
-
-    
-    <p><strong>Reporting Period</strong> {{\Carbon\Carbon::create()->day(1)->month($month)->format('M')}} {{ $year }}</p>
-  
-    <table class="table table-bordered">
-        <tr>
-            <th>Date</th>
-            <th>Presence Hours</th>
-            <th>Project Hours</th>
-            <th>Notes</th>
-        </tr>
-        @foreach($period as $date)
-        <tr>
-            <td>{{ $date->format('d-m-Y') }}</td>
-            @if (isset($worksheet_as_dict[$date->format('Y-m-d')]))
-                <td>{{$worksheet_as_dict[$date->format('Y-m-d')]->worked_hours}}</td>    
-            @else
-                <td>-</td>    
-            @endif
-            @if (isset($timesheet_as_dict[$date->format('Y-m-d')]))
-                <td>{{$worksheet_as_dict[$date->format('Y-m-d')]->worked_hours}}</td>    
-                @if (isset($worksheet_as_dict[$date->format('Y-m-d')]->notes))
-                    <td>{{$worksheet_as_dict[$date->format('Y-m-d')]->notes}}</td>    
-                @else
-                    <td>-</td>
-                @endif
-            @else
-                <td>-</td>    
-                <td>-</td>    
-            @endif
             
-        </tr>
-        @endforeach
-    </table>
-    <br>
-    <br>
-    <div class="row" style="margin-left: 10px ;">
-            
-            <p><strong>Total Presence Hours</strong> {{$total_presence}}</p>
-    </div>
-    <div class="row" style="margin-left: 10px ;">
-        
-        <p><strong>Total Project Hours</strong> {{$total_on_project}}</p>
-    </div>
-    <div class="row float-right" style="margin-left: 10px ;">
-        <div class="float-right">
-            <label>Supervisor signature</label>
-            <hr>
+            <p><strong>Total Project Hours</strong> {{$total_on_project}}</p>
+        </div>
+        <div class="row float-right" style="margin-left: 10px ;">
+            <div class="float-right">
+                <label>Supervisor signature</label>
+                <hr>
+            </div>
+        </div>
+        <div class="row" style="margin-left: 10px ;">
+            <div class="float-right">
+                <label>Employee signature</label>
+                <hr>
+            </div>
         </div>
     </div>
-    <div class="row" style="margin-left: 10px ;">
-        <div class="float-right">
-            <label>Employee signature</label>
-            <hr>
-        </div>
-    </div>
-</div>
-    
-    
-  
 </body>
 </html>

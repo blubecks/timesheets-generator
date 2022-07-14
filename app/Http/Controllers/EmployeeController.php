@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EditEmployeeRequest;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Employee;
+use App\Models\Timesheet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -91,5 +93,22 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+    *
+    *
+    */
+    public function timesheectListing(Employee $employee){
+        
+        $timesheets = Timesheet::with('project')->where('employee_id', $employee->id)->get();
+        //dd($timesheets);
+        $results = $timesheets->groupBy(['project.name', function($timesheet){
+            $date = Carbon::createFromFormat('Y-m-d', $timesheet->day); 
+            return $date->year.'-'.$date->month;
+        }])->all();
+        
+        return view('employees.timesheets', compact('employee', 'results'));
+
     }
 }

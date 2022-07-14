@@ -29,7 +29,11 @@
                                             <a href="{{ route('employees.edit', $employee) }}" class="btn bg-green-500 text-white ml-4">
                                                 {{ __('Edit') }}
                                             </a>
+                                            <a href="{{ route('employees.timesheets', $employee) }}" class="btn bg-blue-600 text-white ml-4">
+                                                {{ __('Timesheets') }}
+                                            </a>
                                             </div>
+                                            
                                         </div>
                                                
                                             
